@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+    <link rel="shortcut icon" href="logo.png" >
+    <title> Ashish-Contest </title>
+  </head>
+  <body>
+    <div class="row mx-0 my-0">
+
+        <div class="col-md-2 col-sm-12 px-0 bg-dark sp pb-5" >
+            <div class=" w-100 pr-2 text-white">
+              <div class="h-100 d-block float-left pl-3 pt-3">
+                <h5> Ashish Gupta </h5>
+              </div>
+              <button type="button" class=" d-md-none btn btn-outline-info my-2 switcher float-right" onclick="mob()">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+              </button>
+              <div class="clearfix"></div>
+            </div>
+            <button type="button" class="btn border-left-0 rounded-0 btn-outline-info mt-3 w-100" data-toggle="modal" data-target="#exampleModal"> Fetch Your Info !!</button>
+            <button type="button" class="btn border-left-0 rounded-0 btn-outline-info w-100 mb-4" onclick="theme(true)"> Switch Theme !!</button> 
+            <div class="left-panel">
+              <li class="list-group-item active bg-info rounded-0 sectionhead"> Categories <i class="down-arrow float-right mt-1 mr-2"></i></li> 
+            </div>
+            
+        </div>
+
+        <div class="col-md-10 col-sm-12 py-4 right">
+
+            <button type="button" class="d-md-none btn btn-outline-info my-2 switcher" onclick="mob()">
+              <div class="bar"></div>
+              <div class="bar"></div>
+              <div class="bar"></div>
+            </button>
+
+          <div class="alert alert-info notf1">
+            <h5> Welcome to Ashish Special Contest-Portal </h5>
+            <h6> Topic  : <span id="topic"> DP </span> </h6>
+          </div>
+          <div class="alert alert-success notf2">
+            <div class="float-left ques">Question = 0/0 </div>
+            <div class="float-right user_info"> <span class=""> No user </span></div>
+            <div class="clearfix"></div>
+          </div>
+          <div class="right-panel">
+            <div class="alert alert-success">
+                <h4> We are fetching contest for you please wait .....</h4>
+            </div>
+            <!-- <ul class="list-group my-3">
+                <li class="list-group-item active"> <strong>#1 </strong>D : Mer Mitenghe</li>
+                <li class="list-group-item"> <strong>Question :</strong>  <a href="https://codeforces.com/contest/1326/standings">https://codeforces.com/contest/1326/standings</a></li>
+                <li class="list-group-item"><strong>Solution :</strong> <a href="https://codeforces.com/contest/1326/standings">https://codeforces.com/contest/1326/standings</a></li>
+                <li class="list-group-item "><strong>Tags :</strong> Dp,number theory, bruteforce</li>
+                <li class="list-group-item "><strong>Rating :</strong> 1800 </li>
+            </ul> -->
+            
+          </div>
+
+        </div>
+
+
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel"> Fetch Your Info</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                      <label for="email">Codeforces Username:</label>
+                      <input type="text" class="form-control" id="username" required>
+                      <small id="emailHelp" class="form-text text-muted">Once fetched data will be store in catche. Data will not lost on refreshing. </small>
+                    </div>
+                    <div class="fetch-info">
+    
+                    </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="submit"onclick="reset_user()" data-dismiss="modal" class="btn btn-danger">Reset</button>
+                  <button type="submit"onclick="new_user()" data-dismiss="modal" class="btn btn-primary">Fetch Info</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+    </div>
+    <script src="main_data.js"></script>
+    <script src="index.js"></script>
+  </body>
+</html>
