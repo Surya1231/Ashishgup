@@ -1,8 +1,10 @@
-let user_name = null;
-let user_contest = {};
-let last_render = localStorage.sanket_last_render ? localStorage.sanket_last_render : 'dp';
-let last_element = '.sectionhead';
-console.log(last_render);
+var user_name = localStorage.sanket_user_name ? localStorage.sanket_user_name : null;
+var user_contest = {};
+var last_render = localStorage.sanket_last_render ? localStorage.sanket_last_render : 'dp';
+var last_element = '.sectionhead';
+var theme_n = localStorage.sanket_theme ? localStorage.sanket_theme : 0;
+
+
 
 function request(url){
     try{
@@ -12,7 +14,6 @@ function request(url){
         xhr.onreadystatechange = function () {
             if (xhr.readyState === 4 && xhr.status === 200) {
                 console.log("Request completed")
-                //localStorage.suryaa_user_contest = xhr.responseText;
                 json = JSON.parse(xhr.responseText);
                 work(json.result);
             }
@@ -57,8 +58,7 @@ function sidenav(){
 }
 
 function fetch_user(user){
-    user_name = user;
-    localStorage.sanket_user_name = user_name;
+    $('.user_info').html("<span class='text-danger'>"+user+"</span>");
     console.log("Started Fetching info for user");
     var xhr = new XMLHttpRequest();
     var url = "https://codeforces.com/api/user.status?handle="+user_name;
@@ -83,14 +83,16 @@ function fill_user_contest(json){
         }
         });
     }
+    else return;
     $('.user_info').html("<span>"+user_name+"</span>");
     render(last_render,last_element);
 }
 
 
 function new_user(){
-    var newuser = $('#username').val();
-    $('.user_info').html("<span class='text-danger'>"+newuser+"</span>");
+    user_name = $('#username').val();
+    localStorage.sanket_user_name = user_name;
+    $('.sp').removeClass('supersp');
     fetch_user(newuser);
 }
   
@@ -118,6 +120,7 @@ function render(cat,element){
     $('.right-panel').html(table);
     $('#topic').html(cat);
     $('.ques').html("Questions : " + uc + '/' + tc);
+    $('.sp').removeClass('supersp');
 }
 
 
@@ -129,12 +132,15 @@ function mob(){
 function theme(val){
     console.log("Theme Changed");
     $('.right').toggleClass('ddark');
+    localStorage.sanket_theme = 1-localStorage.sanket_theme;
 }
 
 function initial(){
+    localStorage.sanket_theme = theme_n;
+    if(theme_n ==  1) $('.right').addClass('ddark');
     sidenav();
-    console.log(last_render);
     render(last_render,last_element);
+    if(user_name) fetch_user(user_name);
     //request("https://codeforces.com/api/user.status?handle=ashishgup");
 }
 
