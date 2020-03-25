@@ -98,6 +98,7 @@ function new_user(){
   
 
 function render(cat,element){
+    $('.sp').removeClass('supersp');
     last_render = cat;
     last_element = element;
     localStorage.sanket_last_render = cat;
@@ -120,7 +121,7 @@ function render(cat,element){
     $('.right-panel').html(table);
     $('#topic').html(cat);
     $('.ques').html("Questions : " + uc + '/' + tc);
-    $('.sp').removeClass('supersp');
+    
 }
 
 
