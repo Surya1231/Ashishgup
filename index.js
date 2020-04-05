@@ -93,7 +93,7 @@ function new_user(){
     user_name = $('#username').val();
     localStorage.sanket_user_name = user_name;
     $('.sp').removeClass('supersp');
-    fetch_user(newuser);
+    fetch_user(user_name);
 }
 
 
