@@ -37,7 +37,7 @@ function work(json){
             const question_url = "https://codeforces.com/contest/"+contest_id+"/problem/"+index
             const solution_url = "https://codeforces.com/contest/"+contest_id+"/submission/"+id
             tags.forEach(tag => {
-                if(!data[tag]) data[tag] = []; 
+                if(!data[tag]) data[tag] = [];
                 data[tag].push([question_url , solution_url , item.problem]);
             });
         }
@@ -54,7 +54,7 @@ function sidenav(){
     for (var key of Object.keys(main_data)) {
         left_list += '<li class="list-group-item menu" onclick="render('+"'"+ key +"'"+',this)">'+key+'</li>'
     }
-    $('.left-panel').html(left_list); 
+    $('.left-panel').html(left_list);
 }
 
 function fetch_user(user){
@@ -72,7 +72,7 @@ function fetch_user(user){
     };
     xhr.send();
 }
-  
+
 function fill_user_contest(json){
     user_contest = {};
     if(json.status && json.status == "OK"){
@@ -95,7 +95,7 @@ function new_user(){
     $('.sp').removeClass('supersp');
     fetch_user(newuser);
 }
-  
+
 
 function render(cat,element){
     $('.sp').removeClass('supersp');
@@ -106,6 +106,8 @@ function render(cat,element){
     $(element).addClass("list-group-item-primary");
     var table = "<div class='row'>";
     var tc = 0 , uc = 0;
+    main_data[cat].sort((a,b) => a[2].rating - b[2].rating);
+    //console.log("Here");
     main_data[cat].forEach( (item,index) => {
         tc++;
         var spclass = "";
@@ -121,7 +123,7 @@ function render(cat,element){
     $('.right-panel').html(table);
     $('#topic').html(cat);
     $('.ques').html("Questions : " + uc + '/' + tc);
-    
+
 }
 
 
@@ -137,6 +139,7 @@ function theme(val){
 }
 
 function initial(){
+
     localStorage.sanket_theme = theme_n;
     if(theme_n ==  1) $('.right').addClass('ddark');
     sidenav();
