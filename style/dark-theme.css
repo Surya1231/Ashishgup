@@ -13,7 +13,6 @@
 
 .dark-theme li {
   background-color: black !important;
-  border-color: white !important;
 }
 
 .dark-theme li.active {
