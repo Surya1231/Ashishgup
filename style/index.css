@@ -1,0 +1,23 @@
+html,
+body {
+  height: 100%;
+  padding: 0%;
+  margin: 0%;
+}
+
+body {
+  min-height: 100vh;
+  font-family: "Ubuntu", sans-serif;
+}
+
+.h-screen {
+  min-height: 92vh;
+}
+
+#questions-table {
+  font-size: 0.8rem;
+}
+
+.light-theme .solved li:not(:first-child) {
+  background-color: #daffe8 !important;
+}

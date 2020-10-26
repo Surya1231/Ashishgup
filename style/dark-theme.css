@@ -1,0 +1,25 @@
+.dark-theme {
+  color: white !important;
+}
+
+.dark-theme .bg-light {
+  background-color: rgb(61, 61, 61) !important;
+  color: white;
+}
+
+.dark-theme hr {
+  border-color: white !important;
+}
+
+.dark-theme li {
+  background-color: black !important;
+  border-color: white !important;
+}
+
+.dark-theme li.active {
+  background-color: #007bff !important;
+}
+
+.dark-theme .solved li:not(:first-child) {
+  background-color: #012b57 !important;
+}
