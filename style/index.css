@@ -18,6 +18,10 @@ body {
   font-size: 0.8rem;
 }
 
+label {
+  font-size: 0.9rem;
+}
+
 .light-theme .solved li:not(:first-child) {
   background-color: #daffe8 !important;
 }

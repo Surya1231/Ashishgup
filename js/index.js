@@ -144,12 +144,19 @@ async function logIn() {
     $("#login-button").html("LogIn");
     $("input[name=user]").prop("disabled", false);
     $("input[name=user]").val("");
+    User = null;
+    User_Data = {};
+    localStorage.removeItem(LOCAL_STORAGE_USER);
+    localStorage.removeItem(LOCAL_STORAGE_USER_DATA);
+    renderTable();
   }
 }
 
 function refreshUser() {
-  User = null;
-  logIn();
+  if (User) {
+    User = null;
+    logIn();
+  }
 }
 
 function localUser() {
