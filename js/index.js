@@ -81,12 +81,18 @@ function renderTable() {
   const minRating = Number($("input[name=min-rating]").val());
   const maxRating = Number($("input[name=max-rating]").val());
   const category = $("select[name=category").val().replace(SPECIAL_CHARATER, " ");
+  const label = $("select[name=label").val();
 
   let table = "<div class='row'>";
   let user_solved = 0,
     total_questions = 0;
   Ashish_Data.forEach((item) => {
-    if ((!category || item.tags.indexOf(category) !== -1) && item.rating >= minRating && item.rating <= maxRating) {
+    if (
+      (!category || item.tags.indexOf(category) !== -1) &&
+      item.rating >= minRating &&
+      item.rating <= maxRating &&
+      item.index.indexOf(label) !== -1
+    ) {
       let solved = User_Data && User_Data[item.contestId] && User_Data[item.contestId][item.index];
       let coloum = `
         <div class='col-md-4 px-2 py-3 mx-0 my-0'>
@@ -96,7 +102,7 @@ function renderTable() {
                 <li class="list-group-item py-1"><b>Solution : </b> <a target="_blank" href=${item.solutionUrl}> Ashish Solution ${
         solved ? `, <a target="_blank" href=${solved}> Your Solution </a>` : ""
       }</a></li>
-                <li class="list-group-item py-1"><b>Rating : </b> ${item.rating} </li>
+                <li class="list-group-item py-1"><b>Rating : </b> ${item.rating} ,  ${item.index} </li>
                 <li class="list-group-item py-1"><b>Tags : </b> ${item.tags.join(", ")}</li>
             </ul>
         </div>`;
@@ -173,6 +179,7 @@ function localFilter() {
   if (filter["min-rating"]) $("input[name=min-rating]").val(filter["min-rating"]);
   if (filter["max-rating"]) $("input[name=max-rating]").val(filter["max-rating"]);
   if (filter["category"]) $("select[name=category").val(filter["category"]);
+  if (filter["label"]) $("select[name=label").val(filter["label"]);
 }
 
 function localTheme() {
