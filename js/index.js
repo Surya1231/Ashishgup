@@ -49,7 +49,6 @@ async function getUserData(username) {
   if (response.ok) {
     const data = await response.json();
     if (data && data.status === "OK") {
-      console.log(data.result);
       data.result.forEach((item) => {
         if (!userData[item.contestId]) userData[item.contestId] = {};
         if (item.verdict === "OK" && item.problem && item.problem.rating && !userData[item.contestId][item.problem.index]) {

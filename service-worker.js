@@ -1,7 +1,19 @@
 const PRECACHE = "precache-v1";
-const RUNTIME = "runtime";
+const RUNTIME = "runtime-v1";
 
-const PRECACHE_URLS = [];
+const PRECACHE_URLS = [
+  "/manifest.json",
+  "/icons/favicon-16x16-dunplab-manifest-21527.jpg",
+  "/icons/apple-icon-144x144-dunplab-manifest-21527.jpg",
+  "/index.html",
+  "/style/bootstrap.min.css",
+  "/style/index.css",
+  "/style/dark-theme.css",
+  "/js/jquery-3.5.1.min.js",
+  "/js/bootstrap.bundle.min.js",
+  "/js/index.js",
+  "/js/data.js",
+];
 
 self.addEventListener("install", (event) => {
   event.waitUntil(
@@ -32,8 +44,8 @@ self.addEventListener("activate", (event) => {
 });
 
 self.addEventListener("fetch", (event) => {
-  console.log(event.request.url);
   if (event.request.url.startsWith(self.location.origin)) {
+    console.log(event.request.url);
     event.respondWith(
       caches.match(event.request).then((cachedResponse) => {
         if (cachedResponse) {

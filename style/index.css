@@ -22,6 +22,26 @@ label {
   font-size: 0.9rem;
 }
 
+*:hover,
+*:focus,
+*:active {
+  outline: none;
+  box-shadow: none !important;
+  -webkit-appearance: none;
+}
+
 .light-theme .solved li:not(:first-child) {
   background-color: #daffe8 !important;
+}
+
+@media (max-width: 550px) {
+  .custom-navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+  }
+  body {
+    padding-top: 56px;
+  }
 }
