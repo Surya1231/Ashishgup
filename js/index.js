@@ -190,7 +190,7 @@ function localTheme() {
 function registerServiceWorker() {
   if ("serviceWorker" in navigator) {
     navigator.serviceWorker
-      .register("../service-worker.js")
+      .register("service-worker.js")
       .then((reg) => {
         console.log("Registration successful", reg);
       })
